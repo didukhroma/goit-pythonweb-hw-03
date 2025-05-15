@@ -18,8 +18,6 @@ RUN poetry install --no-interaction --no-ansi --verbose
 
 COPY . .
 
-VOLUME [ "/storage/data.json" ]
-
 EXPOSE 3000
 
 CMD ["python" , "main.py"]

@@ -89,8 +89,8 @@ class HttpHandler(BaseHTTPRequestHandler):
 
 
 def run(server_class=HTTPServer, handler_class=HttpHandler):
-    # server_address = ("0.0.0.0", 3000)
-    server_address = ("", 3000)
+    server_address = ("0.0.0.0", 3000)  # server settings for docker container
+    # server_address = ("", 3000)  # server settings for localhost
     http = server_class(server_address, handler_class)
     try:
         http.serve_forever()

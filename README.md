@@ -2,14 +2,14 @@
 
 ## How to start:
 
-1. Create docker image
-
 ```
-docker build . -t <your-image name>
+git clone https://github.com/didukhroma/goit-pythonweb-hw-03
 ```
 
-2. Run docker container
-
 ```
-docker run -itd -p 3000:3000 -v /storage/data.json <your-image name>
+cd goit-pythonweb-hw-03
+```
+
+```python
+docker compose up
 ```

@@ -1,0 +1,8 @@
+services:
+  myservice:
+    build:
+      context: .
+    volumes:
+      - ./storage:/app/storage
+    ports:
+      - '3000:3000'
