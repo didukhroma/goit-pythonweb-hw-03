@@ -32,12 +32,12 @@ def read_data_from_file() -> dict:
 def prepare_template():
     print("run function")
     env = Environment(loader=FileSystemLoader("."))
-    template = env.get_template("./template/template.jinja")
+    template = env.get_template("template/template.jinja")
     logs = read_data_from_file()
     output = template.render(
         data=logs,
     )
-    with open("read.html", "w") as f:
+    with open("templates/read.html", "w") as f:
         f.write(output)
 
 
@@ -46,17 +46,17 @@ class HttpHandler(BaseHTTPRequestHandler):
         pr_url = urllib.parse.urlparse(self.path)
         print(pr_url.path)
         if pr_url.path == "/":
-            self.send_html_file("index.html")
+            self.send_html_file("templates/index.html")
         elif pr_url.path == "/message":
-            self.send_html_file("message.html")
+            self.send_html_file("templates/message.html")
         elif pr_url.path == "/read":
             prepare_template()
-            self.send_html_file("read.html")
+            self.send_html_file("templates/read.html")
         else:
             if pathlib.Path().joinpath(pr_url.path[1:]).exists():
                 self.send_static()
             else:
-                self.send_html_file("error.html", 404)
+                self.send_html_file("templates/error.html", 404)
 
     def send_html_file(self, filename, status=200):
         self.send_response(status)
